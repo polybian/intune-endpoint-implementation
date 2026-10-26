@@ -21,7 +21,7 @@ Packaging and deploying Windows desktop apps via Intune. Placeholders:
 
 - [ ] Apps → Windows → Add → app type **Windows app (Win32)** → upload
       `.intunewin`
-- [ ] Name / publisher / description filled in — this is what users see in
+- [ ] Name / publisher / description filled in: this is what users see in
       Company Portal if the app is assigned as Available
 - [ ] Program: exact **install command** and **uninstall command**
 - [ ] Install behavior: System (machine-wide, the usual default) vs User;
@@ -40,10 +40,10 @@ Packaging and deploying Windows desktop apps via Intune. Placeholders:
 
 ## 4. Assignment
 
-- [ ] **Pilot group first, Required** — validate end-to-end on test devices
+- [ ] **Pilot group first, Required**: validate end-to-end on test devices
 - [ ] Then broad group: **Required** (auto-install) vs **Available**
       (Company Portal self-service), chosen deliberately
-- [ ] Exclusions reviewed — no group is both Required and Excluded
+- [ ] Exclusions reviewed: no group is both Required and Excluded
       unintentionally
 - [ ] Rollout timing considered (user notifications, restart grace)
 
@@ -51,7 +51,7 @@ Packaging and deploying Windows desktop apps via Intune. Placeholders:
 
 - [ ] Apps → `<AppName>` → Device install status reviewed after the rollout
       window
-- [ ] Failures sampled per device — common patterns: detection rule mismatch
+- [ ] Failures sampled per device. Common patterns: detection rule mismatch
       (app installed but reporting failed), installer not actually silent
       (hangs until timeout), Intune Management Extension not running
 - [ ] Success rate meets the bar before widening the assignment
@@ -62,9 +62,9 @@ Packaging and deploying Windows desktop apps via Intune. Placeholders:
       (`services.msc` → Microsoft Intune Management Extension)
 - [ ] Force a check-in: Company Portal → Settings → Sync
 - [ ] IME logs: `C:\ProgramData\Microsoft\IntuneManagementExtension\Logs\`
-      (`IntuneManagementExtension.log` — search by app ID)
+      (`IntuneManagementExtension.log`, search by app ID)
 - [ ] Check detection manually: does the file / registry value / product code
       actually exist after install?
 - [ ] Reproduce the install command locally as SYSTEM (e.g. via PsExec
-      `-s`) — many installers behave differently in system context than as an
+      `-s`): many installers behave differently in system context than as an
       admin user

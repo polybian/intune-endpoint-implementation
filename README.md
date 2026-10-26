@@ -1,4 +1,4 @@
-# Intune Endpoint Implementation — Full Device Lifecycle with Microsoft Intune
+# Intune Endpoint Implementation: Full Device Lifecycle with Microsoft Intune
 
 Not every new hire at Kime Capital needs a laptop; some work from their own
 computers. When someone does need one, it ships to them registered in Autopilot, so
@@ -85,14 +85,14 @@ rings, and retire/wipe decommissioning with an asset trail in Snipe-IT.
 
 - Templates only: placeholder GUIDs (`00000000-...`), no tenant IDs,
   serials, hostnames, SSIDs, or credentials anywhere in this repo.
-- Hardware-hash CSVs contain serial numbers — gitignored. Real exported
-  policy JSONs — gitignored. Only `*.example.json` templates are committed.
-- A compliance policy by itself blocks nothing — Conditional Access enforces
+- Hardware-hash CSVs contain serial numbers: gitignored. Real exported
+  policy JSONs: gitignored. Only `*.example.json` templates are committed.
+- A compliance policy by itself blocks nothing: Conditional Access enforces
   it. The template's 72-hour block grace is a starting point, not a verdict.
 - BitLocker recovery keys escrow to Entra ID when encryption is enforced;
   verify escrow before any wipe, or recovery is impossible.
 - Least privilege: do policy/enrollment work with Intune Administrator (or a
-  scoped custom role) plus scope tags — never a global admin daily driver.
+  scoped custom role) plus scope tags, never a global admin daily driver.
 
 ## Testing
 

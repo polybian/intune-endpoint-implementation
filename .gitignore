@@ -1,5 +1,5 @@
 # --- Real policy exports: only *.example.json templates are committed.
-# Exported policy JSONs may contain tenant-specific IDs — keep them local.
+# Exported policy JSONs may contain tenant-specific IDs - keep them local.
 policies/*.json
 !policies/*.example.json
 

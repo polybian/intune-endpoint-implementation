@@ -1,4 +1,4 @@
-# Enrollment Runbook — Windows (Autopilot + manual fallback)
+# Enrollment Runbook: Windows (Autopilot + manual fallback)
 
 SOP for enrolling a corporate Windows device into Intune. Placeholders
 throughout (`<serial>`, `<user>`); group names follow `docs/architecture.md`.
@@ -6,7 +6,7 @@ throughout (`<serial>`, `<user>`); group names follow `docs/architecture.md`.
 ## Pre-enrollment checklist
 
 - [ ] Intune license assigned to the user (or device license in place)
-- [ ] Asset record created in Snipe-IT — asset tag and serial recorded
+- [ ] Asset record created in Snipe-IT: asset tag and serial recorded
       **there**, never in this repo
 - [ ] Autopilot enrollment profile `Autopilot-Corporate` exists and is
       assigned to the Autopilot device group
@@ -51,13 +51,13 @@ When no hash is available (board-swap repair, legacy machine) or for BYOD:
   `deviceOwnership = Personal` dynamic rule.
 - **Confirm ownership classification** (Devices → device properties). A device
   misclassified as Personal lands in the BYOD group and misses corporate
-  policies — flip it to Corporate when appropriate.
+  policies: flip it to Corporate when appropriate.
 
 ## Group targeting (verify)
 
 - Intune → Devices → All devices → select the device → **Group membership**.
 - Expect the corporate dynamic group to be present. Dynamic membership
-  processing takes time — if the device is absent after a few hours, go to
+  processing takes time: if the device is absent after a few hours, go to
   Entra ID → Groups → group → Dynamic membership rules → *Validate rules* and
   fix the syntax.
 
@@ -79,9 +79,9 @@ When no hash is available (board-swap repair, legacy machine) or for BYOD:
 |---|---|---|
 | Device boots to plain consumer OOBE, no tenant branding | Hash not imported, or imported into the wrong tenant | Find the serial in Autopilot devices; re-import the CSV into the correct tenant |
 | Autopilot profile status **Not assigned** | Device isn't in the profile's target group | Check the group tag / dynamic rule; fix the rule, wait for membership processing, sync |
-| OOBE error / stuck on the Enrollment Status Page | Network drop, or ESP blocked waiting on a failing required app | Reconnect network and retry; review ESP settings — don't block ESP on non-critical app installs |
+| OOBE error / stuck on the Enrollment Status Page | Network drop, or ESP blocked waiting on a failing required app | Reconnect network and retry; review ESP settings: don't block ESP on non-critical app installs |
 | Enrollment fails with `0x80180014` | Enrollment restriction blocks the platform or personal devices | Review Devices → Enrollment restrictions; confirm the device is marked corporate |
-| `0x8018000a` — device already enrolled | Stale MDM record from a previous enrollment | Retire/remove the old device record and old work account, then re-enroll |
+| `0x8018000a`: device already enrolled | Stale MDM record from a previous enrollment | Retire/remove the old device record and old work account, then re-enroll |
 | Device in Entra ID but not in Intune | MDM auto-enrollment scope doesn't include the user | Entra ID → Mobility (MDM) → Microsoft Intune: set the MDM user scope to cover the user; re-join |
 | Compliance stuck at **Not evaluated** | Device hasn't checked in, or no compliance policy assigned to it | Sync from Company Portal (Settings → Sync); confirm policy assignment and group membership |
 | BitLocker never turns on | TPM not ready, Home edition, or conflicting encryption present | Check TPM state, require Pro edition or higher, resolve third-party encryption, review profile errors |
