@@ -1,8 +1,9 @@
 # Intune Endpoint Implementation — Full Device Lifecycle with Microsoft Intune
 
-I run the full device lifecycle at Kime Capital with Intune and Autopilot, from a
-new laptop in the box to wiping it when someone leaves. These are the templates and
-checklists behind that work, with every company detail swapped for placeholders.
+Not every new hire at Kime Capital needs a laptop; some work from their own
+computers. When someone does need one, it ships to them registered in Autopilot, so
+it sets itself up when they sign in. When they leave, it gets wiped and accounted
+for. These are sanitized versions of the Intune templates and runbooks I use.
 
 It covers Autopilot enrollment, dynamic group targeting, compliance-gated access,
 Win32 app deployment, and GDPR-aware decommissioning.
